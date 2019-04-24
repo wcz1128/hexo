@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
+title: 随手笔记
+subtitle: 不要懒
+description: 
 keywords:
-author: John Doe
-language:
-timezone:
+author: wcz
+language: zh-CN
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://wcz.pub
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -83,4 +83,3 @@ deploy:
     github: git@github.com:wcz1128/hexo.git
     tencent: git@git.dev.tencent.com:wcz1128/hexo.git
   branch: master
-

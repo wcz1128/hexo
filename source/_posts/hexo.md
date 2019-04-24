@@ -52,7 +52,11 @@ deploy:
 
 &emsp;&emsp;可以在文章中加入`<!-- more -->`，这样首页就会显示一个 readmore
 
-5. 懒
+5. 多地编辑
+
+&emsp;&emsp;再增加一个分支，并且设置为默认分支。将代码(除去.deploy_git .DS_Store Thumbs.db db.json *.log node_modules/ public/)以外代码传至新分支。新机器只要git clone git@github.com:xxxxx.git。进入克隆后的目录`npm install` 安装必要的库(之前要先install hexo)，然后就可以`hexo g;hexo d`发布了。新机器改完后需要`git commit;git push` 将新的代码传回新建分支即可。代码在新分支，Pages用的是主分支。
+
+6. 懒
 
 &emsp;&emsp;还是有一些忘记了，不管了就写到这里吧，默认的主题也挺好看的就不换了。
 

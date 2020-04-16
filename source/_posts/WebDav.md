@@ -1,5 +1,5 @@
 ---
-title: WebDav 搭建
+title: NAS 搭建
 date: 2019-05-24 07:39:49
 tags:
   - WebDav
@@ -73,6 +73,9 @@ aria2c --enable-rpc --rpc-listen-all --rpc-allow-origin-all --rpc-secret=miyao -
 # 在线流媒体播放器
 
 &emsp;&emsp;这个一直没有找到合适，我希望既可以网页浏览，又可以在线点播。
+
+&emsp;&emsp;后记
+&emsp;&emsp;试用了Emby 、Kod。如果只是简单的播放，可道云就可以做掉。如果需要漂亮的照片墙，那么就需要Emby或者KOD了。最后两者之间我选择了Emby感觉这个比较好用，客户端也比较多。但是Android平板的客户端不行，IOS客户端也不给力。好在没有客户端，网页也是一样给力的，有空再写Emby的安装吧。
 
 # 推倒重来
 

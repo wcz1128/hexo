@@ -50,7 +50,6 @@ Alias /xxx /xxxx
 
 
 ### Windows 50M 文件大小限制
-
 &emsp;&emsp;可以修改注册表 计算机\HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WebClient\Parameters\FileSizeLimitInBytes 来解决，需要重启Webclient服务，或者简单暴力重启系统也可以哈。
 
 
@@ -74,3 +73,23 @@ aria2c --enable-rpc --rpc-listen-all --rpc-allow-origin-all --rpc-secret=miyao -
 # 在线流媒体播放器
 
 &emsp;&emsp;这个一直没有找到合适，我希望既可以网页浏览，又可以在线点播。
+
+# 推倒重来
+
+&emsp;&emsp;做完这一切以后发现，已经有很多很成熟的方案了，所以很快又把自建WebDav放弃了，而是使用现成的第三方方案比如
+
+&emsp;&emsp;[可道云](https://kodcloud.com/)  
+&emsp;&emsp;[seafile](https://www.seafile.com/home/)  
+&emsp;&emsp;[Nextcloud](https://nextcloud.com/)  
+
+&emsp;&emsp;三个都试了，下次不懒的话写个个人的使用感受，目前选了Nextcloud和可道云
+
+
+# WebDav挂载开机后连不上
+https需要修改注册表
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters 
+把BasicAuthLevel 值改成2，即同时支持http和https，默认只支持https，然后重启服务： 
+net stop webclient 
+net start webclient 
+
+另外开机默认webclient好像不启动的，我在windows服务里面把webclinet改成自动就可以开机挂载了。

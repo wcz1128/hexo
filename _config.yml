@@ -7,7 +7,7 @@ title: 随手笔记
 subtitle: 不要懒
 description: 
 keywords:
-author: wcz
+author: 王承志
 language: zh-CN
 timezone: Asia/Shanghai
 
@@ -82,4 +82,5 @@ deploy:
   repo: 
     github: git@github.com:wcz1128/hexo.git
     tencent: git@git.dev.tencent.com:wcz1128/hexo.git
+    codenet: git@e.coding.net:wzn518/hemarizhi.git
   branch: master

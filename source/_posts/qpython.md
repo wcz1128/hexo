@@ -96,3 +96,31 @@ while True:
 ```
 
 个人感觉这个watch非常的好用。dump_hierarchy可以dump出整个布局文件。
+
+# qpython
+
+首先在apk界面点击运行终端,让qpython初始化一下，在第一行可以看到启动命令，以后就可以后台启动了
+```
+4.4以上系统
+/data/data/com.hipipal.qpyplus/files/bin/qpython-android5.sh
+在4.4系统下
+/data/data/com.hipipal.qpyplus/files/bin/qpython.sh
+```
+
+打开pip安装界面
+```
+pip install humanize
+pip install progress
+pip install retry
+pip install requests
+```
+
+从pc拷贝whichcraft.py 和 uiautomator2 到机器上
+
+如果不要前面的python -m uiautomator2 init初始化，也可以手动安装两个包，然后手动启动atx服务
+
+然后连接手机时候不要用adb用http
+
+```
+d = u2.connect('http://127.0.0.1:7912')
+```

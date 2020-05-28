@@ -17,4 +17,7 @@ tags:
 import upip
 upip.install('micropython-umqtt.simple')
 
+# esp32 cam
+连接图如下
 
+![][/image/sep32_1.png]

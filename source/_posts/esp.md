@@ -20,4 +20,4 @@ upip.install('micropython-umqtt.simple')
 # esp32 cam
 连接图如下
 
-![][/image/sep32_1.png]
+![连接图](/image/sep32_1.png)

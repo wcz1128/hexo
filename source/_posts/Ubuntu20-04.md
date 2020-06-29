@@ -289,4 +289,10 @@ grant all privileges on nextcloud.* to namexxxx@localhost identified by 'mimaxxx
 
 修改目录权限www-data
 ```
+apt-get install php-zip php-curl  php-intl php-gmp php-imagick
+```
+
+/etc/php/7.4/fpm/php.ini
+```
+memory_limit = 1024M
 ```

@@ -289,10 +289,24 @@ grant all privileges on nextcloud.* to namexxxx@localhost identified by 'mimaxxx
 
 修改目录权限www-data
 ```
-apt-get install php-zip php-curl  php-intl php-gmp php-imagick
+apt-get install php-zip php-curl  php-intl php-gmp php-imagick php-redis
 ```
 
 /etc/php/7.4/fpm/php.ini
 ```
 memory_limit = 1024M
+```
+
+/etc/php/7.4/fpm/pool.d/www.conf
+```
+env[PATH] = /usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/bin/php
+```
+
+nextcloud/config/config.php
+```
+  'memcache.local' => '\OC\Memcache\Redis',
+  'redis' => array(
+          'host' => 'localhost',
+          'port' => 1128,
+  ),`
 ```

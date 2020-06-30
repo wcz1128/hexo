@@ -80,7 +80,7 @@ theme: landscape
 deploy:
   type: git
   repo: 
-    github: git@github.com:wcz1128/hexo.git
+#github: git@github.com:wcz1128/hexo.git
     tencent: git@git.dev.tencent.com:wcz1128/hexo.git
     codenet: git@e.coding.net:wzn518/hemarizhi.git
   branch: master

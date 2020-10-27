@@ -240,3 +240,28 @@ light:
 &emsp;&emsp;当我想在米家做自动化的时候发现，没有上架的调试中的技能是无法调用的，所以米家自动化调用米家外的设备还不行（但是这个却有需求，因为米家的一些设备例如蓝牙锁还加不到HASS中，如果要联动就还不行）
 
 
+&emsp;&emsp;更新
+当初很随便的做了一下，只是做通了。回过头来规范做一遍
+其实自定义的设备应该放在
+conf/custom_components/ 目录下，比如konke
+conf/custom_components/konke
+然后你有一个灯，就新建一个light.py
+然后这个目录应该有几个文件
+__init__.py 空的就可以
+manifest.json
+{
+        "domain": "konke",
+        "name": "konke",
+        "documentation": "https://www.hachina.io/3973.html#comments",
+        "requirements": [],
+        "codeowners": [],
+        "dependencies": []
+}
+
+
+我们自定义一个类型可以放在最外面
+conf/custom_components/ 目录下
+比如我们做一个hippo设备
+配置文件可以这样写
+conf/configuration.yaml
+hippo:

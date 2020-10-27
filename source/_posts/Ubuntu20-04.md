@@ -36,6 +36,7 @@ wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-
 apt-get update
 apt-get install virtualbox-6.1
 wget https://download.virtualbox.org/virtualbox/6.1.10/Oracle_VM_VirtualBox_Extension_Pack-6.1.10.vbox-extpack
+wget https://download.virtualbox.org/virtualbox/6.1.10/VBoxGuestAdditions_6.1.10.iso
 VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-6.1.10.vbox-extpack
 ```
 

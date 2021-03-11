@@ -33,7 +33,7 @@ brew install proxychains-ng
 brew install v2ray
 ```
 
-&emsp;&emsp;经过熟悉后发现，其实brew下载的软件会在<font color='red'>/opt/homebrew/</font>目录下建立一个类似linux的根目录。配置文件就在熟悉的etc目录下
+&emsp;&emsp;经过熟悉后发现，其实brew下载的软件会在`/opt/homebrew/`目录下建立一个类似linux的根目录。配置文件就在熟悉的etc目录下
 
 &emsp;&emsp;要启动服务可以通过 services相关命令实现
 
@@ -42,3 +42,49 @@ brew services --help
 ```
 
 
+# hexo
+ 
+&emsp;&emsp;代码提交`hexo d`报如下错误
+
+```
+TypeError [ERR_INVALID_ARG_TYPE]: The "mode" argument must be integer. Received an instance of Object
+```
+&emsp;&emsp;原因是node版本和原本的hexo不符合。可以通过降级node解决，但是M1版本的nvm还下不到M1版本的老版本node，所以反过来，升级hexo一样可以解决。我的方法是重新安装新版本的hexo，然后`hexo init hexo`将里面的`package.json`拷贝出来替换老的配置就好了。
+```
+{
+  "name": "hexo-site",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "server": "hexo server"
+  },
+  "hexo": {
+    "version": "5.4.0"
+  },
+  "dependencies": {
+    "hexo": "^5.0.0",
+    "hexo-deployer-git": "^3.0.0",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-index": "^2.0.0",
+    "hexo-generator-tag": "^1.0.0",
+    "hexo-renderer-ejs": "^1.0.0",
+    "hexo-renderer-marked": "^4.0.0",
+    "hexo-renderer-stylus": "^2.0.0",
+    "hexo-server": "^2.0.0",
+    "hexo-theme-landscape": "^0.0.3"
+  }
+}
+```
+
+# 安装IOS应用
+
+&emsp;&emsp;M1一大吸引我的地方是可以安装IOS应用，直接在应用市场下载就可以了。但是有些应用在市场已经下架了。例如微信手机版本。如果要安装，就要通过IPA包的方式安装，获得IPA包的方式网上推荐比较多的是iMazing。我安装了它的免费版，发现它的导出IPA按钮是灰色的。
+&emsp;&emsp;最终方法是通过`Apple Configurator 2`,通过它向手机添加APP时候，它会零时将IPA下载到`~/Library/GroupContainersAlias/K36BKF7T3D.group.com.apple.configurator/Library/Caches/Assets/TemporaryItems/MobileApps/`目录下，另外安装完，执行会报没有权限，可以通过`sudo xattr -rd com.apple.quarantine /Applications/xxxxxx`解决
+
+
+
+# 接着慢慢玩吧，对于我这个MacOS小白来说，M1芯片的MacMini还是挺有意思的。

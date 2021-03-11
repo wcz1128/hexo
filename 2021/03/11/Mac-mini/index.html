@@ -15,7 +15,7 @@
 <meta property="og:description" content="Mac mini&amp;emsp;&amp;emsp;Mac mini 购入后的一些配置">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-11T05:10:34.000Z">
-<meta property="article:modified_time" content="2021-03-11T05:30:25.520Z">
+<meta property="article:modified_time" content="2021-03-11T05:55:28.236Z">
 <meta property="article:author" content="王承志">
 <meta property="article:tag" content="Mac mini">
 <meta name="twitter:card" content="summary">
@@ -108,12 +108,18 @@
 <p>&emsp;&emsp;通过brew就可以安装很多工具了，例如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install proxychains-ng</span><br><span class="line">brew install v2ray</span><br></pre></td></tr></table></figure>
 
-<p>&emsp;&emsp;经过熟悉后发现，其实brew下载的软件会在<font color='red'>/opt/homebrew/</font>目录下建立一个类似linux的根目录。配置文件就在熟悉的etc目录下</p>
+<p>&emsp;&emsp;经过熟悉后发现，其实brew下载的软件会在<code>/opt/homebrew/</code>目录下建立一个类似linux的根目录。配置文件就在熟悉的etc目录下</p>
 <p>&emsp;&emsp;要启动服务可以通过 services相关命令实现</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services --help</span><br></pre></td></tr></table></figure>
 
 
+<h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h1><p>&emsp;&emsp;代码提交<code>hexo d</code>报如下错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: The &quot;mode&quot; argument must be integer. Received an instance of Object</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;原因是node版本和原本的hexo不符合。可以通过降级node解决，但是M1版本的nvm还下不到M1版本的老版本node，所以反过来，升级hexo一样可以解决。我的方法是重新安装新版本的hexo，然后<code>hexo init hexo</code>将里面的<code>package.json</code>拷贝出来替换老的配置就好了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;hexo-site&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.0.0&quot;,</span><br><span class="line">  &quot;private&quot;: true,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;hexo generate&quot;,</span><br><span class="line">    &quot;clean&quot;: &quot;hexo clean&quot;,</span><br><span class="line">    &quot;deploy&quot;: &quot;hexo deploy&quot;,</span><br><span class="line">    &quot;server&quot;: &quot;hexo server&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;hexo&quot;: &#123;</span><br><span class="line">    &quot;version&quot;: &quot;5.4.0&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;hexo&quot;: &quot;^5.0.0&quot;,</span><br><span class="line">    &quot;hexo-deployer-git&quot;: &quot;^3.0.0&quot;,</span><br><span class="line">    &quot;hexo-generator-archive&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-generator-category&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-generator-index&quot;: &quot;^2.0.0&quot;,</span><br><span class="line">    &quot;hexo-generator-tag&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-ejs&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-marked&quot;: &quot;^4.0.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-stylus&quot;: &quot;^2.0.0&quot;,</span><br><span class="line">    &quot;hexo-server&quot;: &quot;^2.0.0&quot;,</span><br><span class="line">    &quot;hexo-theme-landscape&quot;: &quot;^0.0.3&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h1 id="安装IOS应用"><a href="#安装IOS应用" class="headerlink" title="安装IOS应用"></a>安装IOS应用</h1><p>&emsp;&emsp;M1一大吸引我的地方是可以安装IOS应用，直接在应用市场下载就可以了。但是有些应用在市场已经下架了。例如微信手机版本。如果要安装，就要通过IPA包的方式安装，获得IPA包的方式网上推荐比较多的是iMazing。我安装了它的免费版，发现它的导出IPA按钮是灰色的。<br>&emsp;&emsp;最终方法是通过<code>Apple Configurator 2</code>,通过它向手机添加APP时候，它会零时将IPA下载到<code>~/Library/GroupContainersAlias/K36BKF7T3D.group.com.apple.configurator/Library/Caches/Assets/TemporaryItems/MobileApps/</code>目录下，另外安装完，执行会报没有权限，可以通过<code>sudo xattr -rd com.apple.quarantine /Applications/xxxxxx</code>解决</p>
+<h1 id="接着慢慢玩吧，对于我这个MacOS小白来说，M1芯片的MacMini还是挺有意思的。"><a href="#接着慢慢玩吧，对于我这个MacOS小白来说，M1芯片的MacMini还是挺有意思的。" class="headerlink" title="接着慢慢玩吧，对于我这个MacOS小白来说，M1芯片的MacMini还是挺有意思的。"></a>接着慢慢玩吧，对于我这个MacOS小白来说，M1芯片的MacMini还是挺有意思的。</h1>
       
     </div>
     <footer class="article-footer">

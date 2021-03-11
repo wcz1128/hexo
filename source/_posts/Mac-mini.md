@@ -87,4 +87,5 @@ TypeError [ERR_INVALID_ARG_TYPE]: The "mode" argument must be integer. Received 
 
 
 
-# 接着慢慢玩吧，对于我这个MacOS小白来说，M1芯片的MacMini还是挺有意思的。
+# 接着慢慢玩吧
+&emsp;&emsp;对于我这个MacOS小白来说，M1芯片的MacMini还是挺有意思的。

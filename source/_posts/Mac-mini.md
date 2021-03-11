@@ -85,6 +85,12 @@ TypeError [ERR_INVALID_ARG_TYPE]: The "mode" argument must be integer. Received 
 &emsp;&emsp;M1一大吸引我的地方是可以安装IOS应用，直接在应用市场下载就可以了。但是有些应用在市场已经下架了。例如微信手机版本。如果要安装，就要通过IPA包的方式安装，获得IPA包的方式网上推荐比较多的是iMazing。我安装了它的免费版，发现它的导出IPA按钮是灰色的。
 &emsp;&emsp;最终方法是通过`Apple Configurator 2`,通过它向手机添加APP时候，它会零时将IPA下载到`~/Library/GroupContainersAlias/K36BKF7T3D.group.com.apple.configurator/Library/Caches/Assets/TemporaryItems/MobileApps/`目录下，另外安装完，执行会报没有权限，可以通过`sudo xattr -rd com.apple.quarantine /Applications/xxxxxx`解决
 
+# 挂载tmpfs
+
+&emsp;&emsp;ramdisk 相当于linux的tmpfs
+```
+diskutil erasevolume HFS+ \"RamDisk\" `hdiutil attach -nomount ram://204800`
+```
 
 
 # 接着慢慢玩吧

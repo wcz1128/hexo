@@ -89,7 +89,7 @@ TypeError [ERR_INVALID_ARG_TYPE]: The "mode" argument must be integer. Received 
 
 &emsp;&emsp;ramdisk 相当于linux的tmpfs
 ```
-diskutil erasevolume HFS+ \"RamDisk\" `hdiutil attach -nomount ram://204800`
+diskutil erasevolume HFS+ RamDisk `hdiutil attach -nomount ram://204800`
 ```
 
 

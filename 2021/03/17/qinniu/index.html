@@ -5,17 +5,17 @@
   
 
   
-  <title>rsync | 随手笔记</title>
+  <title>七牛云，百度网盘 | 随手笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介&amp;emsp;&amp;emsp;rsync 一些简单记录">
+  <meta name="description" content="简介&amp;emsp;&amp;emsp;网络存储">
 <meta property="og:type" content="article">
-<meta property="og:title" content="rsync">
-<meta property="og:url" content="http://example.com/2020/06/12/rsync/index.html">
+<meta property="og:title" content="七牛云，百度网盘">
+<meta property="og:url" content="http://example.com/2021/03/17/qinniu/index.html">
 <meta property="og:site_name" content="随手笔记">
-<meta property="og:description" content="简介&amp;emsp;&amp;emsp;rsync 一些简单记录">
+<meta property="og:description" content="简介&amp;emsp;&amp;emsp;网络存储">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-12T07:26:33.000Z">
-<meta property="article:modified_time" content="2021-03-11T05:05:40.679Z">
+<meta property="article:published_time" content="2021-03-17T05:37:22.000Z">
+<meta property="article:modified_time" content="2021-03-17T05:45:14.766Z">
 <meta property="article:author" content="王承志">
 <meta name="twitter:card" content="summary">
   
@@ -75,10 +75,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-rsync" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-qinniu" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/06/12/rsync/" class="article-date">
-  <time datetime="2020-06-12T07:26:33.000Z" itemprop="datePublished">2020-06-12</time>
+    <a href="/2021/03/17/qinniu/" class="article-date">
+  <time datetime="2021-03-17T05:37:22.000Z" itemprop="datePublished">2021-03-17</time>
 </a>
     
   </div>
@@ -89,7 +89,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      rsync
+      七牛云，百度网盘
     </h1>
   
 
@@ -97,25 +97,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>&emsp;&emsp;rsync 一些简单记录</p>
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>&emsp;&emsp;网络存储</p>
 <span id="more"></span>
 
-<h1 id="安装AriaNG"><a href="#安装AriaNG" class="headerlink" title="安装AriaNG"></a>安装AriaNG</h1><p>&emsp;&emsp;云服务器要到期了，打算备份下里面的东西<br>&emsp;&emsp;yum -y install rsync<br>&emsp;&emsp;服务器上配置文件/etc/rsyncd.conf       我就按示例来的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"># &#x2F;etc&#x2F;rsyncd: configuration file for rsync daemon mode</span><br><span class="line"># See rsyncd.conf man page for more options.</span><br><span class="line"># configuration example:</span><br><span class="line"></span><br><span class="line">uid &#x3D; nobody</span><br><span class="line">gid &#x3D; nobody</span><br><span class="line">use chroot &#x3D; yes</span><br><span class="line">max connections &#x3D; 4</span><br><span class="line">pid file &#x3D; &#x2F;var&#x2F;run&#x2F;rsyncd.pid</span><br><span class="line">exclude &#x3D; lost+found&#x2F;</span><br><span class="line">transfer logging &#x3D; yes</span><br><span class="line">timeout &#x3D; 900</span><br><span class="line">ignore nonreadable &#x3D; yes</span><br><span class="line">dont compress   &#x3D; *.gz *.tgz *.zip *.z *.Z *.rpm *.deb *.bz2</span><br><span class="line"></span><br><span class="line">[ftp]</span><br><span class="line">        path &#x3D; &#x2F;root&#x2F;upload</span><br><span class="line">        comment &#x3D; ftp export area</span><br><span class="line">        read only&#x3D;yes</span><br><span class="line">        list&#x3D;no</span><br><span class="line">        auth users&#x3D;username</span><br><span class="line">        secrets file&#x3D;&#x2F;etc&#x2F;rsyncd.passwd</span><br><span class="line"></span><br><span class="line">[www]</span><br><span class="line">        path &#x3D; &#x2F;www</span><br><span class="line">        comment &#x3D; www export area</span><br><span class="line">        read only&#x3D;yes</span><br><span class="line">        list&#x3D;no</span><br><span class="line">        auth users&#x3D;username</span><br><span class="line">        secrets file&#x3D;&#x2F;etc&#x2F;rsyncd.passwd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;配置密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#39;username:123456&#39;&gt;&#x2F;etc&#x2F;rsyncd.passwd</span><br><span class="line">chmod 600 &#x2F;etc&#x2F;rsyncd.passwd  </span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;客户端更简单<br>&emsp;&emsp;配置密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#39;123456&#39;&gt;&#x2F;local&#x2F;passwd</span><br><span class="line">rsync -auv --password-file&#x3D;&#x2F;local&#x2F;passwd username@ip::www &#x2F;localdir&#x2F;www</span><br></pre></td></tr></table></figure>
-
-
-
+<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>&emsp;&emsp;<br>&emsp;&emsp;国内云机到期了，价格比较贵，想想也没啥用，平时似乎也就做做下载服务器了。要跑后台程序有国外云机，要公网服务，还有公司服务器。但是也就下载这个好像是个需求。现在静态网页也托管到github上了，是不是配合七牛或者百度的网盘作为存储，拿来下载静态资源也可以啊。最近百度网盘开放了API，可以通过API获取下载地址了。七牛的免费空间也没比我国内云机云盘小多少，应该是够用了。</p>
+<p>&emsp;&emsp;七牛资源有限，看看百度网盘能不能先用起来。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/06/12/rsync/" data-id="ckm4evhcd000llhj4cv7adpg4" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/17/qinniu/" data-id="ckmd0tc1p0000on6hdbkt680p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -124,19 +115,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/06/29/Ubuntu20-04/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Ubuntu20_04
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/27/VirtualBox/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/03/11/Mac-mini/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">VirtualBox</div>
+      <div class="article-nav-title">Mac mini</div>
     </a>
   
 </nav>

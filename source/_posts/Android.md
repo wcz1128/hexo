@@ -1,23 +1,19 @@
 ---
-title: Android 一些记录
-date: 2021-04-22 13:37:35
-tags: Android
----
 
-
+## title: Android 一些记录 date: 2021-04-22 13:37:35 tags: Android
 
 ### 简介
 
-&emsp;&emsp;Android 一些简单记录
+  Android 一些简单记录
 
 <!-- more -->
 
 # vpn
 
-&emsp;&emsp;
-&emsp;&emsp;受保护的socket会最终通过`setsockopt(*socketFd, SOL_SOCKET, SO_MARK,...)`设置标志位，并且这个标志位并不在数据包内，而是内核的一个标志。
+     受保护的socket会最终通过`setsockopt(*socketFd, SOL_SOCKET, SO_MARK,...)`设置标志位，并且这个标志位并不在数据包内，而是内核的一个标志。
 
 frameworks/base/core/java/android/net/VpnService.java
+
 ```
     /**
      * Protect a socket from VPN connections. After protecting, data sent
@@ -48,7 +44,9 @@ frameworks/base/core/java/android/net/VpnService.java
     }
 
 ```
+
 frameworks/base/core/java/android/net/NetworkUtils.java
+
 ```
     /**
      * Protect {@code fd} from VPN connections.  After protecting, data sent through
@@ -66,7 +64,9 @@ frameworks/base/core/java/android/net/NetworkUtils.java
      */
     public native static boolean protectFromVpn(int socketfd);
 ```
+
 frameworks/base/core/jni/android_net_NetUtils.cpp
+
 ```
 { "protectFromVpn", "(I)Z", (void*)android_net_utils_protectFromVpn },
 static jboolean android_net_utils_protectFromVpn(JNIEnv *env, jobject thiz, jint socket)
@@ -74,7 +74,9 @@ static jboolean android_net_utils_protectFromVpn(JNIEnv *env, jobject thiz, jint
     return (jboolean) !protectFromVpn(socket);
 }
 ```
+
 system/netd/client/NetdClient.cpp
+
 ```
 extern "C" int protectFromVpn(int socketFd) {
     if (socketFd < 0) {
@@ -87,6 +89,7 @@ extern "C" int protectFromVpn(int socketFd) {
 ```
 
 system/netd/server/FwmarkServer.cpp
+
 ```
 int FwmarkServer::processClient(SocketClient* client, int* socketFd) {
     FwmarkCommand command;
@@ -290,3 +293,98 @@ int FwmarkServer::processClient(SocketClient* client, int* socketFd) {
 }
 ```
 
+# 输入法
+
+AndroidManifest.xml 
+
+这里面指定的activity是主页上点击的，和设置里面点击的不一样。
+
+```
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="my.com.cn.myime">
+
+    <original-package android:name="my.com.cn.myime" />
+
+        <uses-sdk android:minSdkVersion="19" />
+    <uses-permission xmlns:android="http://schemas.android.com/apk/res/android" android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+        <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <application android:label="我的输入法"
+                android:icon="@drawable/ic_launcher"
+        >
+
+        <service android:name="MyIME" 
+                                android:label="我的输入法"
+                                android:permission="android.permission.BIND_INPUT_METHOD"
+                 >
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data android:name="android.view.im" android:resource="@xml/method" />
+        </service>
+                <activity android:name="MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest> 
+```
+
+res/xml/method.xml
+
+这个里面主要settingsActivity是指定在设置界面内点击输入法的方法
+
+```
+<?xml version="1.0" encoding="utf-8"?>                                                                                                                 
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+ 
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ -->
+<!-- The attributes in this XML file provide configuration information -->
+<!-- for the Search Manager. -->
+
+<input-method xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:settingsActivity="my.com.cn.myime.MainActivity"
+              >
+</input-method>
+```
+
+输入法如果不实现InputView在某些情况下将会有一些问题。
+
+```
+        @Override public View onCreateInputView() {
+             
+                return this.getLayoutInflater().inflate(R.layout.keyboard_default_main, null);
+                
+        }
+```

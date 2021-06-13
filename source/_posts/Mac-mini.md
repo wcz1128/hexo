@@ -95,3 +95,10 @@ diskutil erasevolume HFS+ RamDisk `hdiutil attach -nomount ram://204800`
 
 # 接着慢慢玩吧
 &emsp;&emsp;对于我这个MacOS小白来说，M1芯片的MacMini还是挺有意思的。
+
+# 开启转发
+```
+sysctl -w net.inet.ip.forwarding=1
+#nat on utun2 from en0:network to 172.19.24.0/24 -> (utun2)
+nat on en1 from en0:network -> (en1)
+```

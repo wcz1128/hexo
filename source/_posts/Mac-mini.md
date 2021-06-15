@@ -108,3 +108,10 @@ rdr on en1 inet proto tcp from any to port 18700 -> 10.6.10.187 port 443
 sudo pfctl -ef /etc/pf.conf
 sudo pfctl -sn
 ```
+
+# 使用串口
+```
+screen -L /dev/cu.usbserial-0001 115200
+退出
+Ctrl A Ctrl K
+```

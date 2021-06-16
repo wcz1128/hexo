@@ -61,6 +61,7 @@ chmod 600 /etc/rsyncd.passwd
 echo '123456'>/local/passwd
 rsync -auv --password-file=/local/passwd username@ip::www /localdir/www
 ```
+&emsp;&emsp;rsync.conf 必须是600权限
 
 
 

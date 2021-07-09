@@ -60,3 +60,7 @@ install.sh
 就配置完环境了。
 
 
+# esp8266
+我买的eps01模块烧写AT固件没问题，但是RTOS编的始终报checksum有问题，去掉检查，也是时而能进时而不能进系统。改了不同的flash地址也一样。试试NONSDK
+，第一个坑就是要把Iotdemo拷贝到SDK目录而不能在example目录
+

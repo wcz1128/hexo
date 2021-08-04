@@ -70,3 +70,13 @@ ifconfig $INTERFACE down
 #!/bin/sh
 ifconfig $INTERFACE 10.200.0.4 netmask 255.255.255.0
 ```
+
+
+
+&emsp;&emsp; m1 MacOS 已经自带了utun设备，安装tuntap也装不上，修改下设备类型
+```
+DeviceType = utun
+ifconfig $INTERFACE 10.200.0.2 10.200.0.1 up
+sudo route -n add   -net 10.200.0.0/16 10.200.0.2
+```
+

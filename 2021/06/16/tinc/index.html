@@ -15,7 +15,7 @@
 <meta property="og:description" content="简介&amp;emsp;&amp;emsp; tinc 一个简单的组网工具">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-16T08:07:50.000Z">
-<meta property="article:modified_time" content="2021-06-16T08:25:08.606Z">
+<meta property="article:modified_time" content="2021-08-04T07:45:50.052Z">
 <meta property="article:author" content="王承志">
 <meta property="article:tag" content="tinc">
 <meta name="twitter:card" content="summary">
@@ -117,6 +117,12 @@
 
 <p>&emsp;&emsp; down 和 up 文件是连接成功后执行的</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@10-9-86-69 MyNet]# cat tinc-down </span><br><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line">ifconfig $INTERFACE down</span><br><span class="line">[root@10-9-86-69 MyNet]# cat tinc-up</span><br><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line">ifconfig $INTERFACE 10.200.0.4 netmask 255.255.255.0</span><br></pre></td></tr></table></figure>
+
+
+
+<p>&emsp;&emsp; m1 MacOS 已经自带了utun设备，安装tuntap也装不上，修改下设备类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DeviceType &#x3D; utun</span><br><span class="line">ifconfig $INTERFACE 10.200.0.2 10.200.0.1 up</span><br><span class="line">sudo route -n add   -net 10.200.0.0&#x2F;16 10.200.0.2</span><br></pre></td></tr></table></figure>
+
 
       
     </div>

@@ -77,6 +77,7 @@ ifconfig $INTERFACE 10.200.0.4 netmask 255.255.255.0
 ```
 DeviceType = utun
 ifconfig $INTERFACE 10.200.0.2 10.200.0.1 up
-sudo route -n add   -net 10.200.0.0/16 10.200.0.2
+route -n add   -net 10.200.0.0/16 10.200.0.2
+route -v delete -net 10.200.0.0/16 10.200.0.2
 ```
 

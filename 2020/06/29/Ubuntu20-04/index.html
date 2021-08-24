@@ -15,7 +15,7 @@
 <meta property="og:description" content="简介&amp;emsp;&amp;emsp;今天新装了台电脑，纯记录下">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-29T05:07:50.000Z">
-<meta property="article:modified_time" content="2021-03-11T05:05:40.678Z">
+<meta property="article:modified_time" content="2021-08-24T01:59:17.852Z">
 <meta property="article:author" content="王承志">
 <meta name="twitter:card" content="summary">
   
@@ -156,7 +156,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env[PATH] &#x3D; &#x2F;usr&#x2F;local&#x2F;bin:&#x2F;usr&#x2F;local&#x2F;sbin:&#x2F;usr&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;bin:&#x2F;sbin:&#x2F;usr&#x2F;bin&#x2F;php</span><br></pre></td></tr></table></figure>
 
 <p>nextcloud/config/config.php</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#39;memcache.local&#39; &#x3D;&gt; &#39;\OC\Memcache\Redis&#39;,</span><br><span class="line">&#39;redis&#39; &#x3D;&gt; array(</span><br><span class="line">        &#39;host&#39; &#x3D;&gt; &#39;localhost&#39;,</span><br><span class="line">        &#39;port&#39; &#x3D;&gt; 1128,</span><br><span class="line">),&#96;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#39;memcache.distributed&#39; &#x3D;&gt; &#39;\\OC\\Memcache\\Redis&#39;,</span><br><span class="line">&#39;memcache.local&#39; &#x3D;&gt; &#39;\OC\Memcache\Redis&#39;,</span><br><span class="line">&#39;redis&#39; &#x3D;&gt; array(</span><br><span class="line">        &#39;host&#39; &#x3D;&gt; &#39;localhost&#39;,</span><br><span class="line">        &#39;port&#39; &#x3D;&gt; 1128,</span><br><span class="line">),</span><br><span class="line">&#39;memcache.local&#39; &#x3D;&gt; &#39;\\OC\\Memcache\\APCu&#39;,</span><br></pre></td></tr></table></figure>
+
+<p>echo ‘apc.enable_cli=1’ &gt;&gt; /etc/php/7.0/mods-available/apcu.ini</p>
 
       
     </div>

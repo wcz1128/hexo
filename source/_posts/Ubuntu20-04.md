@@ -305,9 +305,15 @@ env[PATH] = /usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/bi
 
 nextcloud/config/config.php
 ```
+  'memcache.distributed' => '\\OC\\Memcache\\Redis',
   'memcache.local' => '\OC\Memcache\Redis',
   'redis' => array(
           'host' => 'localhost',
           'port' => 1128,
-  ),`
+  ),
+  'memcache.local' => '\\OC\\Memcache\\APCu',
 ```
+
+echo 'apc.enable_cli=1' >> /etc/php/7.0/mods-available/apcu.ini
+
+

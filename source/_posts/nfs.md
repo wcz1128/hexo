@@ -25,3 +25,27 @@ tags: nfs sshfs iscsi
 # iscsi
 
 	这个最近才接触到，缺点貌似听说只能独占硬盘，其实并不属于共享，但是下完了拔过来就完事了哈。
+
+```
+apt-get install tgt
+tgtadm --lld iscsi --mode target --op new --tid 1 --targetname hippo-storage-iscsi-1
+tgt-admin --show  
+tgtadm --lld iscsi --mode target --op bind --tid 1 -I ALL
+tgt-admin --show  
+tgtadm --lld iscsi --mode logicalunit --op new --tid 1 --lun 1 -b /sync57/remote/test.bin
+tgt-admin --show  
+删除
+tgtadm --lld iscsi --op delete --mode logicalunit --tid 1 --lun 1
+tgt-admin --show  
+tgtadm --lld iscsi --op delete --mode target --tid 1
+tgt-admin --show  
+```
+
+
+	客户端
+```
+ iscsiadm --mode discovery --type sendtargets --portal 10.200.0.1
+ iscsiadm -m node --login
+ 
+ iscsiadm -m node -p 10.200.0.1 --logout   
+```

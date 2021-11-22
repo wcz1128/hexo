@@ -15,7 +15,7 @@
 <meta property="og:description" content="简介找了一些网络文件系统试试">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-19T01:36:10.000Z">
-<meta property="article:modified_time" content="2021-11-22T03:03:45.106Z">
+<meta property="article:modified_time" content="2021-11-22T09:06:39.542Z">
 <meta property="article:author" content="王承志">
 <meta property="article:tag" content="nfs sshfs iscsi">
 <meta name="twitter:card" content="summary">
@@ -101,14 +101,10 @@
         <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>找了一些网络文件系统试试</p>
 <span id="more"></span>
 
-<h1 id="初衷"><a href="#初衷" class="headerlink" title="初衷"></a>初衷</h1><pre><code>在公司下国外代码太费劲，小的代码可以国外下好，打包发回国内速度也能到2~3百K，但是大的代码就由于空间不足，只能挂代理下载了。代理速度也许是小文件的缘故，也许是转发性能的缘故，速度一直上不来。所以想找一个合适的网络文件系统。
-</code></pre>
-<h1 id="nfs"><a href="#nfs" class="headerlink" title="nfs"></a>nfs</h1><pre><code>最早想到的就是samba和nfs。NFS端口开放比较麻烦，好在有我之前搭建的tinc，目前我所有机器都在同一个内网，所以不存在端口开放的问题。实测了下，对于大文件，基本能把我tinc的速度跑满，但是对于git一些小而量大的文件，还是速度上不来。
-</code></pre>
-<h1 id="sshfs"><a href="#sshfs" class="headerlink" title="sshfs"></a>sshfs</h1><pre><code>这个是我目前零时用的最多的工具，因为使用太方便了，一条命令解决，但是缺点还是速度跑不满，甚至还不如挂代理来的快。
-</code></pre>
-<h1 id="iscsi"><a href="#iscsi" class="headerlink" title="iscsi"></a>iscsi</h1><pre><code>这个最近才接触到，缺点貌似听说只能独占硬盘，其实并不属于共享，但是下完了拔过来就完事了哈。
-</code></pre>
+<h1 id="初衷"><a href="#初衷" class="headerlink" title="初衷"></a>初衷</h1><p>在公司下国外代码太费劲，小的代码可以国外下好，打包发回国内速度也能到2~3百K，但是大的代码就由于空间不足，只能挂代理下载了。代理速度也许是小文件的缘故，也许是转发性能的缘故，速度一直上不来。所以想找一个合适的网络文件系统。</p>
+<h1 id="nfs"><a href="#nfs" class="headerlink" title="nfs"></a>nfs</h1><p>最早想到的就是samba和nfs。NFS端口开放比较麻烦，好在有我之前搭建的tinc，目前我所有机器都在同一个内网，所以不存在端口开放的问题。实测了下，对于大文件，基本能把我tinc的速度跑满，但是对于git一些小而量大的文件，还是速度上不来。</p>
+<h1 id="sshfs"><a href="#sshfs" class="headerlink" title="sshfs"></a>sshfs</h1><p>这个是我目前零时用的最多的工具，因为使用太方便了，一条命令解决，但是缺点还是速度跑不满，甚至还不如挂代理来的快。</p>
+<h1 id="iscsi"><a href="#iscsi" class="headerlink" title="iscsi"></a>iscsi</h1><p>这个最近才接触到，缺点貌似听说只能独占硬盘，其实并不属于共享，但是下完了拔过来就完事了哈。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">apt-get install tgt</span><br><span class="line">tgtadm --lld iscsi --mode target --op new --tid 1 --targetname hippo-storage-iscsi-1</span><br><span class="line">tgt-admin --show  </span><br><span class="line">tgtadm --lld iscsi --mode target --op bind --tid 1 -I ALL</span><br><span class="line">tgt-admin --show  </span><br><span class="line">tgtadm --lld iscsi --mode logicalunit --op new --tid 1 --lun 1 -b &#x2F;sync57&#x2F;remote&#x2F;test.bin</span><br><span class="line">tgt-admin --show  </span><br><span class="line">删除</span><br><span class="line">tgtadm --lld iscsi --op delete --mode logicalunit --tid 1 --lun 1</span><br><span class="line">tgt-admin --show  </span><br><span class="line">tgtadm --lld iscsi --op delete --mode target --tid 1</span><br><span class="line">tgt-admin --show  </span><br></pre></td></tr></table></figure>
 
 
